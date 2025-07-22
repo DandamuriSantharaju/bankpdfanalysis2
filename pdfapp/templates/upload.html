@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bank PDF to Excel Converter</title>
+</head>
+<body>
+    <h2>Upload Bank Statement PDF</h2>
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Convert to Excel</button>
+    </form>
+</body>
+</html>

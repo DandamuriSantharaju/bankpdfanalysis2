@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: bankpdfanalysis
+    env: python
+    buildCommand: ""
+    startCommand: gunicorn bankpdfanalysis.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: bankpdfanalysis.settings
+      - key: PYTHON_VERSION
+        value: 3.10
