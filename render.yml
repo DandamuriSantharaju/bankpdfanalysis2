@@ -2,7 +2,9 @@ services:
   - type: web
     name: bankpdfanalysis
     env: python
-    buildCommand: ""
+    buildCommand: |
+      apt-get update && apt-get install -y poppler-utils tesseract-ocr
+      pip install -r requirements.txt
     startCommand: gunicorn bankpdfanalysis.wsgi:application
     envVars:
       - key: DJANGO_SETTINGS_MODULE
