@@ -279,12 +279,12 @@ def upload_pdf(request):
                 return FileResponse(output, as_attachment=True, filename="converted.xlsx")
 
             # except Exception as e:
-            #     return render(request, 'upload.html', {'form': form, 'error': f"❌ Error: {str(e)}"})
+            #     return render(request, 'upload.html', {'form': form, 'error': f" Error: {str(e)}"})
             except Exception as e:
                 tb = traceback.format_exc()
-                print("❌ INTERNAL SERVER ERROR:")
+                print("INTERNAL SERVER ERROR:")
                 print(tb)
-                return render(request, 'upload.html', {'form': form, 'error': f"❌ Error: {str(e)}", 'details': tb})
+                return render(request, 'upload.html', {'form': form, 'error': f" Error: {str(e)}", 'details': tb})
     else:
         form = PDFUploadForm()
     return render(request, 'upload.html', {'form': form})

@@ -1,15 +1,26 @@
+#services:
+#  - type: web
+#    name: bankpdfanalysis
+#    env: python
+#    plan: free
+#    region: oregon
+#    buildCommand: |
+#      apt-get update && apt-get install -y poppler-utils tesseract-ocr
+#      pip install -r requirements.txt
+#    startCommand: gunicorn bankpdfanalysis.wsgi:application
+#    envVars:
+#      - key: DJANGO_SETTINGS_MODULE
+#        value: bankpdfanalysis.settings
+#      - key: PYTHON_VERSION
+#        value: 3.10
+
+
 services:
   - type: web
     name: bankpdfanalysis
     env: python
-    plan: free
-    region: oregon
+    plan: starter  # upgrade from free to starter for more RAM + time
     buildCommand: |
       apt-get update && apt-get install -y poppler-utils tesseract-ocr
       pip install -r requirements.txt
     startCommand: gunicorn bankpdfanalysis.wsgi:application
-    envVars:
-      - key: DJANGO_SETTINGS_MODULE
-        value: bankpdfanalysis.settings
-      - key: PYTHON_VERSION
-        value: 3.10
